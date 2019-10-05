@@ -52,6 +52,16 @@ public class DetailActivity extends AppCompatActivity {
             }, question.getQuestion_id(), ApiFilters.slightQuestionDetail);
         }
 
-    }
+        controller.loadPosts(new ResponseCallback<QuestionDetail>() {
+            @Override
+            public void onSuccess(@NonNull List<QuestionDetail> list) {
 
+            }
+
+            @Override
+            public void onError(@NonNull Throwable throwable) {
+
+            }
+        });
+    }
 }

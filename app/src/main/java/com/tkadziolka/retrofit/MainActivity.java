@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.tkadziolka.retrofit.data.api.ResponseCallback;
+import com.tkadziolka.retrofit.data.controller.AuthController;
 import com.tkadziolka.retrofit.data.controller.StackOverflowController;
 import com.tkadziolka.retrofit.data.model.Question;
 
@@ -25,6 +26,7 @@ public class MainActivity extends AppCompatActivity implements ResponseCallback<
     private QuestionsAdapter adapter;
     private List<Question> questions = new ArrayList<>();
     private StackOverflowController stackOverflowController;
+    private AuthController authController;
     private RecyclerView recyclerView;
 
     @Override
@@ -52,12 +54,15 @@ public class MainActivity extends AppCompatActivity implements ResponseCallback<
         recyclerView.setAdapter(adapter);
 
         stackOverflowController = new StackOverflowController();
+        authController = new AuthController();
 
     }
 
     @Override
     protected void onStart() {
         super.onStart();
+
+        authController.authorize("Example token");
 
         stackOverflowController.loadQuestions(MainActivity.this, pageSize);
 
