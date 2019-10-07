@@ -7,7 +7,7 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.tkadziolka.retrofit.data.ErrorInterpreter;
-import com.tkadziolka.retrofit.data.api.ResponseCallback;
+import com.tkadziolka.retrofit.data.ResponseCallback;
 import com.tkadziolka.retrofit.data.api.StackOverflowAPI;
 import com.tkadziolka.retrofit.data.model.Question;
 import com.tkadziolka.retrofit.data.model.QuestionDetail;
@@ -16,6 +16,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
@@ -48,7 +49,7 @@ public class StackOverflowController {
         api = retrofit.create(StackOverflowAPI.class);
     }
 
-    public void loadQuestions(final ResponseCallback<Question> callback, int pageSize) {
+    public void loadQuestions(final ResponseCallback<List<Question>> callback, int pageSize) {
         Call<JsonObject> call = api.getAndroidQuestions(pageSize);
         call.enqueue(new Callback<JsonObject>() {
             @Override
@@ -83,7 +84,7 @@ public class StackOverflowController {
         });
     }
 
-    public void loadContent(final ResponseCallback<QuestionDetail> callback, int id, String filter) {
+    public void loadContent(final ResponseCallback<List<QuestionDetail>> callback, int id, String filter) {
         Call<JsonObject> call = api.getQuestionDetails(id, filter);
         call.enqueue(new Callback<JsonObject>() {
             @Override

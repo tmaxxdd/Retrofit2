@@ -9,7 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.tkadziolka.retrofit.data.api.ResponseCallback;
+import com.tkadziolka.retrofit.data.ResponseCallback;
 import com.tkadziolka.retrofit.data.controller.StackOverflowController;
 import com.tkadziolka.retrofit.data.model.Question;
 import com.tkadziolka.retrofit.data.model.QuestionDetail;
@@ -34,7 +34,7 @@ public class DetailActivity extends AppCompatActivity {
         controller = new StackOverflowController();
 
         if (question != null) {
-            controller.loadContent(new ResponseCallback<QuestionDetail>() {
+            controller.loadContent(new ResponseCallback<List<QuestionDetail>>() {
                 @Override
                 public void onSuccess(@NonNull List<QuestionDetail> list) {
                     QuestionDetail detail = list.get(0);
@@ -53,8 +53,9 @@ public class DetailActivity extends AppCompatActivity {
         }
 
         controller.loadPosts(new ResponseCallback<QuestionDetail>() {
+
             @Override
-            public void onSuccess(@NonNull List<QuestionDetail> list) {
+            public void onSuccess(@NonNull QuestionDetail response) {
 
             }
 
