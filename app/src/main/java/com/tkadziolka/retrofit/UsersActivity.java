@@ -4,13 +4,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.tkadziolka.retrofit.data.SimpleCallback;
 import com.tkadziolka.retrofit.data.controller.UserController;
 import com.tkadziolka.retrofit.data.model.User;
 
@@ -19,7 +17,7 @@ import java.util.List;
 
 public class UsersActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private UserController userController = new UserController();
+    private UserController userController;
     private UsersAdapter usersAdapter;
     private List<User> users = new ArrayList<>();
     private Intent singleUserIntent;
@@ -28,6 +26,8 @@ public class UsersActivity extends AppCompatActivity implements View.OnClickList
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_users);
+
+        userController = new UserController(this.getApplicationContext());
 
         singleUserIntent = new Intent(this, SingleUserActivity.class);
 

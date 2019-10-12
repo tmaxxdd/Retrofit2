@@ -1,5 +1,8 @@
 package com.tkadziolka.retrofit.data.controller;
 
+import android.content.Context;
+
+import com.tkadziolka.retrofit.NetworkManager;
 import com.tkadziolka.retrofit.data.ErrorInterpreter;
 import com.tkadziolka.retrofit.data.SimpleCallback;
 import com.tkadziolka.retrofit.data.api.UserAPI;
@@ -7,6 +10,9 @@ import com.tkadziolka.retrofit.data.model.User;
 
 import java.util.List;
 
+import okhttp3.Cache;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -18,12 +24,15 @@ public class UserController {
 
     public static final String TAG = "UserController";
     private static final String MOCKAPI_BASE_URL = "https://5d988f1b61c84c00147d7025.mockapi.io/api/";
+    private Context context;
     private UserAPI api;
 
-    public UserController() {
+    public UserController(Context context) {
+        this.context = context;
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(MOCKAPI_BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
+                .client(getCacheClient())
                 .build();
 
         api = retrofit.create(UserAPI.class);
@@ -119,6 +128,28 @@ public class UserController {
         } else {
             ErrorInterpreter.parse(response.code());
             return false;
+        }
+    }
+
+    private OkHttpClient getCacheClient() {
+        if (context != null) {
+            NetworkManager network = new NetworkManager();
+            Cache cache = new Cache(context.getCacheDir(), 1024 * 1024 * 5);
+            return new OkHttpClient.Builder()
+                    .cache(cache)
+                    .addInterceptor(chain -> {
+                        Request request = chain.request();
+                        Request newRequest;
+                        if (network.isConntected(context))
+                            newRequest = request.newBuilder().addHeader("Cache-Control", "public, max-age=" + 10).build(); // 10 sec
+                        else
+                            newRequest = request.newBuilder()
+                                    .addHeader("Cache-Control", "public, only-if-cached, max-stale=" + 60 * 60 * 24).build(); // 1 day
+
+                        return chain.proceed(newRequest);
+                    }).build();
+        } else {
+            return new OkHttpClient.Builder().build();
         }
     }
 

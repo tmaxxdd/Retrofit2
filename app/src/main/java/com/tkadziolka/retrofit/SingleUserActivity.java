@@ -1,26 +1,21 @@
 package com.tkadziolka.retrofit;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.tkadziolka.retrofit.data.ResponseCallback;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.tkadziolka.retrofit.data.SimpleCallback;
 import com.tkadziolka.retrofit.data.controller.UserController;
 import com.tkadziolka.retrofit.data.model.User;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class SingleUserActivity extends AppCompatActivity implements View.OnClickListener, SimpleCallback<Boolean> {
 
-    private UserController userController = new UserController();
+    private UserController userController;
     private EditText name, job;
     private Button save;
     private int userId;
@@ -30,6 +25,8 @@ public class SingleUserActivity extends AppCompatActivity implements View.OnClic
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_single_user);
+
+        userController = new UserController(this.getApplicationContext());
 
         userId = getIntent().getIntExtra("userId", 0);
 
