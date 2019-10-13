@@ -1,4 +1,4 @@
-package com.tkadziolka.retrofit;
+package com.tkadziolka.retrofit.adapters;
 
 import android.graphics.Color;
 import android.util.Log;
@@ -10,6 +10,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.tkadziolka.retrofit.R;
 import com.tkadziolka.retrofit.data.model.Question;
 
 import java.util.List;
@@ -51,7 +52,7 @@ public class QuestionsAdapter extends RecyclerView.Adapter<QuestionsAdapter.View
         return items.size();
     }
 
-    void setOnItemClickListener(View.OnClickListener clickListener) {
+    public void setOnItemClickListener(View.OnClickListener clickListener) {
         this.listener = clickListener;
     }
 

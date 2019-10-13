@@ -1,4 +1,4 @@
-package com.tkadziolka.retrofit;
+package com.tkadziolka.retrofit.utils;
 
 import android.content.Context;
 import android.net.ConnectivityManager;

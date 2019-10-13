@@ -2,7 +2,7 @@ package com.tkadziolka.retrofit.data.controller;
 
 import android.content.Context;
 
-import com.tkadziolka.retrofit.NetworkManager;
+import com.tkadziolka.retrofit.utils.NetworkManager;
 import com.tkadziolka.retrofit.data.ErrorInterpreter;
 import com.tkadziolka.retrofit.data.SimpleCallback;
 import com.tkadziolka.retrofit.data.api.UserAPI;

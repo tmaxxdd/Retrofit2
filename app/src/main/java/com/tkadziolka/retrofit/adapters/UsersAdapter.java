@@ -1,4 +1,4 @@
-package com.tkadziolka.retrofit;
+package com.tkadziolka.retrofit.adapters;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,6 +9,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.tkadziolka.retrofit.R;
 import com.tkadziolka.retrofit.data.model.User;
 
 import java.util.List;
@@ -43,11 +44,11 @@ public class UsersAdapter extends RecyclerView.Adapter<UsersAdapter.ViewHolder> 
         return items.size();
     }
 
-    void setOnItemClickListener(View.OnClickListener clickListener) {
+    public void setOnItemClickListener(View.OnClickListener clickListener) {
         this.listener = clickListener;
     }
 
-    void setOnDeleteClickListener(View.OnClickListener deleteListener) {
+    public void setOnDeleteClickListener(View.OnClickListener deleteListener) {
         this.deleteListener = deleteListener;
     }
 

@@ -1,4 +1,4 @@
-package com.tkadziolka.retrofit;
+package com.tkadziolka.retrofit.views.users;
 
 import android.os.Bundle;
 import android.view.View;
@@ -9,6 +9,7 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.tkadziolka.retrofit.R;
 import com.tkadziolka.retrofit.data.SimpleCallback;
 import com.tkadziolka.retrofit.data.controller.UserController;
 import com.tkadziolka.retrofit.data.model.User;

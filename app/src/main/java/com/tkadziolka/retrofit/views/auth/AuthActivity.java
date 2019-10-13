@@ -1,9 +1,10 @@
-package com.tkadziolka.retrofit;
+package com.tkadziolka.retrofit.views.auth;
 
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.tkadziolka.retrofit.R;
 import com.tkadziolka.retrofit.data.controller.AuthController;
 
 public class AuthActivity extends AppCompatActivity {

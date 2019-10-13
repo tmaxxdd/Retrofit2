@@ -1,4 +1,4 @@
-package com.tkadziolka.retrofit;
+package com.tkadziolka.retrofit.views.stackoverflow;
 
 import android.os.Bundle;
 import android.text.Html;
@@ -9,6 +9,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.tkadziolka.retrofit.utils.ApiFilters;
+import com.tkadziolka.retrofit.R;
 import com.tkadziolka.retrofit.data.ResponseCallback;
 import com.tkadziolka.retrofit.data.controller.StackOverflowController;
 import com.tkadziolka.retrofit.data.model.Question;

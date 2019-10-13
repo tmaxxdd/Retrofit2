@@ -1,11 +1,14 @@
-package com.tkadziolka.retrofit;
+package com.tkadziolka.retrofit.views;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.tkadziolka.retrofit.R;
+import com.tkadziolka.retrofit.views.auth.AuthActivity;
+import com.tkadziolka.retrofit.views.stackoverflow.StackOverflowActivity;
+import com.tkadziolka.retrofit.views.users.UsersActivity;
 
 public class MainActivity extends AppCompatActivity {
 

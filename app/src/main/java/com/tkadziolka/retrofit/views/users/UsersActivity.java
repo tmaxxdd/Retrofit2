@@ -1,4 +1,4 @@
-package com.tkadziolka.retrofit;
+package com.tkadziolka.retrofit.views.users;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,6 +9,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.tkadziolka.retrofit.R;
+import com.tkadziolka.retrofit.adapters.UsersAdapter;
 import com.tkadziolka.retrofit.data.controller.UserController;
 import com.tkadziolka.retrofit.data.model.User;
 
